@@ -1,0 +1,73 @@
+<form [formGroup]="editForm" (ngSubmit)="editFootbaler()">
+
+    <div class="modal-header">
+        <h4 class="modal-title">Изменение данных футболиста</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group input-group-lg">
+            <label for="name">Имя</label>
+            <input class="form-control" placeholder="Имя" formControlName="name">
+            <div class="alert alert-danger"
+                *ngIf="editForm.controls['name'].invalid && editForm.controls['name'].touched">
+                Заполните поле 'имя'
+            </div>
+        </div>
+    
+        <div class="form-group input-group-lg">
+            <label for="surname">Фамилия</label>
+            <input class="form-control" placeholder="Фамилия" formControlName="surname">
+            <div class="alert alert-danger"
+                *ngIf="editForm.controls['surname'].invalid && editForm.controls['surname'].touched">
+                Заполните поле 'фамилия'
+            </div>
+        </div>
+    
+        <div class="form-group input-group-lg">
+            <label for="gender">Пол</label>
+            <select class="form-control" formControlName="gender">
+                <option *ngFor="let gender of genders" [ngValue]="gender">{{gender}}</option>
+            </select>
+        </div>
+    
+        <div class="form-group input-group-lg">
+            <label for="birthday">Дата рождения</label>
+            <input type="date" class="form-control" placeholder="День рождения" formControlName="birthday">
+            <div class="alert alert-danger"
+                *ngIf="editForm.controls['birthday'].invalid && editForm.controls['birthday'].touched">
+                Заполните день рождения
+            </div>
+        </div>
+    
+        <div class="form-group input-group-lg">
+            <label for="teamId">Футбольная команда</label>
+            <select class="form-control" formControlName="teamId">
+                <option *ngFor="let team of teams" [ngValue]="team.id">{{team.name}}</option>
+            </select>
+            <div class="alert alert-danger"
+                *ngIf="editForm.controls['teamId'].invalid && editForm.controls['teamId'].touched">
+                Выберите команду
+            </div>
+        </div>
+    
+        <div class="form-group input-group-lg">
+            <label for="country">Страна</label>
+            <select class="form-control" formControlName="country">
+                <option *ngFor="let country of countries" [ngValue]="country">{{country}}</option>
+            </select>
+            <div class="alert alert-danger"
+                *ngIf="editForm.controls['country'].invalid && editForm.controls['country'].touched">
+                Выберите страну
+            </div>
+        </div>
+    
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-primary">Изменить</button>
+    </div>
+
+</form>

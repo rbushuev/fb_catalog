@@ -1,0 +1,66 @@
+<form [formGroup]="form" (ngSubmit)="addFootballer()">
+
+    <div class="form-group input-group-lg">
+        <label for="name">Имя</label>
+        <input class="form-control" placeholder="Имя" formControlName="name">
+        <div class="alert alert-danger"
+            *ngIf="form.controls['name'].invalid && form.controls['name'].touched">
+            Заполните поле 'имя'
+        </div>
+    </div>
+
+    <div class="form-group input-group-lg">
+        <label for="surname">Фамилия</label>
+        <input class="form-control" placeholder="Фамилия" formControlName="surname">
+        <div class="alert alert-danger"
+            *ngIf="form.controls['surname'].invalid && form.controls['surname'].touched">
+            Заполните поле 'фамилия'
+        </div>
+    </div>
+
+    <div class="form-group input-group-lg">
+        <label for="gender">Пол</label>
+        <select class="form-control" formControlName="gender">
+            <option *ngFor="let gender of genders" [ngValue]="gender">{{gender}}</option>
+        </select>
+        <div class="alert alert-danger"
+            *ngIf="form.controls['gender'].invalid && form.controls['gender'].touched">
+            Выберите 'пол'
+        </div>
+    </div>
+
+    <div class="form-group input-group-lg">
+        <label for="birthday">Дата рождения</label>
+        <input type="date" class="form-control" placeholder="День рождения" formControlName="birthday">
+        <div class="alert alert-danger"
+            *ngIf="form.controls['birthday'].invalid && form.controls['birthday'].touched">
+            Заполните день рождения
+        </div>
+    </div>
+
+    <div class="form-group input-group-lg">
+        <label for="teamId">Футбольная команда</label>
+        <select class="form-control" formControlName="teamId">
+            <option *ngFor="let team of teams" [ngValue]="team.id">{{team.name}}</option>
+        </select>
+        <div class="alert alert-danger"
+            *ngIf="form.controls['teamId'].invalid && form.controls['teamId'].touched">
+            Выберите команду
+        </div>
+    </div>
+    <button class="btn btn-lg btn-outline-primary" (click)="open()">Добавить команду</button>
+
+    <div class="form-group input-group-lg">
+        <label for="country">Страна</label>
+        <select class="form-control" formControlName="country">
+            <option *ngFor="let country of countries" [ngValue]="country">{{country}}</option>
+        </select>
+        <div class="alert alert-danger"
+            *ngIf="form.controls['country'].invalid && form.controls['country'].touched">
+            Выберите страну
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Добавить футболиста</button>
+</form>
+

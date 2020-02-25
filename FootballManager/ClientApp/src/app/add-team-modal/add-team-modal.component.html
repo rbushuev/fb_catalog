@@ -1,0 +1,26 @@
+<form [formGroup]="addTeamForm" (ngSubmit)="addTeam()">
+        
+    <div class="modal-header">
+        <h4 class="modal-title">Добавление команды</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group input-group-lg">
+            <label for="name">Название команды</label>
+            <input class="form-control" placeholder="Название команды" formControlName="name">
+        </div>
+
+        <div *ngIf="isRequesting">
+            <ngb-progressbar type="info" [value]="100" [striped]="true"></ngb-progressbar>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-primary">Добавить</button>
+    </div>
+
+</form>

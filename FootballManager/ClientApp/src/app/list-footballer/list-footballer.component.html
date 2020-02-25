@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header">Список футболистов</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table mb-0" *ngIf="footballers && footballers.length">
+                <thead>
+                    <tr>
+                        <th>Имя</th>
+                        <th>Фамилия</th>
+                        <th>Пол</th>
+                        <th>Дата рождения</th>
+                        <th>Команда</th>
+                        <th>Страна</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let footballer of footballers">
+                        <td>{{ footballer.name }}</td>
+                        <td>{{ footballer.surname }}</td>
+                        <td>{{ footballer.gender }}</td>
+                        <td>{{ footballer.birthday | date: 'dd.MM.yyyy' }}</td>
+                        <td>{{ footballer.team.name}} </td>
+                        <td>{{ footballer.country}} </td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm" (click)="openEditFootballer(footballer)">Изменить</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
